@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# Go to your repo directory (optional if already inside repo)
-# cd /path/to/your/repo
+# A simple script to add, commit, and push changes with a timestamped message
 
-# Get current timestamp
-timestamp=$(date +"%Y-%m-%d %H:%M:%S")
+# Exit immediately if a command fails
+set -e
 
-# Add all changes
+# Commit message with timestamp
+COMMIT_MESSAGE="Update $(date '+%Y-%m-%d %H:%M:%S')"
+
+# Stage all changes, commit, and push
 git add .
-
-# Commit with timestamp message
-git commit -m "Updated $timestamp"
-
-# Push to current branch
+git commit -m "$COMMIT_MESSAGE"
 git push
+
+echo "✅ Changes pushed with commit message: $COMMIT_MESSAGE"
